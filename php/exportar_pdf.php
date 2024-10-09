@@ -13,21 +13,33 @@ $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $registros = 10; // Ajusta esto según tus necesidades
 $inicio = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
 
+// Consulta modificada para filtrar por categoría
 $consulta_datos = "SELECT * FROM producto 
                    INNER JOIN categoria ON producto.categoria_id = categoria.categoria_id 
-                   INNER JOIN usuario ON producto.usuario_id = usuario.usuario_id 
+                   INNER JOIN usuario ON producto.usuario_id = usuario.usuario_id
+                   WHERE producto.categoria_id = :categoria_id
                    ORDER BY producto.producto_nombre ASC 
-                   LIMIT $inicio, $registros";
+                   LIMIT :inicio, :registros";
 
-$datos = $conexion->query($consulta_datos);
-$datos = $datos->fetchAll(PDO::FETCH_ASSOC);
+// Preparar la consulta
+$stmt = $conexion->prepare($consulta_datos);
+$stmt->bindParam(':categoria_id', $categoria_id, PDO::PARAM_INT);
+$stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+$stmt->bindParam(':registros', $registros, PDO::PARAM_INT);
+
+// Ejecutar la consulta
+$stmt->execute();
+$datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Crear una instancia de FPDF en orientación horizontal
 $pdf = new FPDF('L', 'mm', 'A4'); // 'L' para paisaje
 $pdf->AddPage();
 $pdf->SetMargins(10, 10, 10);
-$pdf->SetFont('Arial', 'B', 10);
+$pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(0, 10, 'Listado de Productos', 0, 1, 'C');
+
+// Espaciado adicional para el encabezado
+$pdf->Ln(5);
 
 // Encabezados de columnas
 $pdf->SetFont('Arial', 'B', 10);
