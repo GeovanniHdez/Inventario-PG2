@@ -1,7 +1,11 @@
 <?php
+	echo '<div class="has-text-right">';
+	echo '<a href="./php/exportar_pdf.php?categoria_id=' . $categoria_id . '&pagina=' . $pagina . '" class="button is-info is-rounded is-small">Exportar a PDF</a>';
+	echo '</div>';
+
 	$inicio = ($pagina>0) ? (($pagina * $registros)-$registros) : 0;
 	$tabla="";
-
+	
 	$campos="producto.producto_id,producto.producto_codigo,producto.producto_nombre,producto.producto_catacion,producto.producto_ubicacion,producto.producto_quintalaje,producto.producto_foto,producto.categoria_id,producto.usuario_id,categoria.categoria_id,categoria.categoria_nombre,usuario.usuario_id,usuario.usuario_nombre,usuario.usuario_apellido";
 
 	if(isset($busqueda) && $busqueda!=""){
@@ -84,7 +88,7 @@
 			';
 		}
 	}
-
+	
 	if($total>0 && $pagina<=$Npaginas){
 		$tabla.='<p class="has-text-right">Mostrando productos <strong>'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>';
 	}

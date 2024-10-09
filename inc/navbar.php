@@ -44,8 +44,7 @@
                     <a href="index.php?vista=product_category" class="navbar-item">Por categoría</a>
                     <a href="index.php?vista=product_search" class="navbar-item">Buscar</a>
                 </div>
-            </div>
-
+            </div>           
         </div>
 
         <div class="navbar-end">
