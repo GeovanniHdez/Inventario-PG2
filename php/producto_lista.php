@@ -2,7 +2,7 @@
 	$inicio = ($pagina>0) ? (($pagina * $registros)-$registros) : 0;
 	$tabla="";
 
-	$campos="producto.producto_id,producto.producto_codigo,producto.producto_nombre,producto.producto_precio,producto.producto_stock,producto.producto_foto,producto.categoria_id,producto.usuario_id,categoria.categoria_id,categoria.categoria_nombre,usuario.usuario_id,usuario.usuario_nombre,usuario.usuario_apellido";
+	$campos="producto.producto_id,producto.producto_codigo,producto.producto_nombre,producto.producto_catacion,producto.producto_ubicacion,producto.producto_quintalaje,producto.producto_foto,producto.categoria_id,producto.usuario_id,categoria.categoria_id,categoria.categoria_nombre,usuario.usuario_id,usuario.usuario_nombre,usuario.usuario_apellido";
 
 	if(isset($busqueda) && $busqueda!=""){
 
@@ -53,7 +53,7 @@
 			            <div class="content">
 			              <p>
 			                <strong>'.$contador.' - '.$rows['producto_nombre'].'</strong><br>
-			                <strong>CODIGO:</strong> '.$rows['producto_codigo'].', <strong>PRECIO:</strong> $'.$rows['producto_precio'].', <strong>STOCK:</strong> '.$rows['producto_stock'].', <strong>CATEGORIA:</strong> '.$rows['categoria_nombre'].', <strong>REGISTRADO POR:</strong> '.$rows['usuario_nombre'].' '.$rows['usuario_apellido'].'
+			                <strong>No. Recibo:</strong> '.$rows['producto_codigo'].', <strong>Catación:</strong>'.$rows['producto_catacion'].', <strong>Ubicación:</strong> '.$rows['producto_ubicacion'].', <strong>Quintalaje:</strong> '.$rows['producto_quintalaje'].', <strong>Categoría:</strong> '.$rows['categoria_nombre'].', <strong>Registrado por:</strong> '.$rows['usuario_nombre'].' '.$rows['usuario_apellido'].'
 			              </p>
 			            </div>
 			            <div class="has-text-right">

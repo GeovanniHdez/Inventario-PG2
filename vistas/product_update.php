@@ -31,28 +31,36 @@
 		<div class="columns">
 		  	<div class="column">
 		    	<div class="control">
-					<label>Código de barra</label>
+					<label>No. Recibo</label>
 				  	<input class="input" type="text" name="producto_codigo" pattern="[a-zA-Z0-9- ]{1,70}" maxlength="70" required value="<?php echo $datos['producto_codigo']; ?>" >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
-					<label>Nombre</label>
+					<label>Productor</label>
 				  	<input class="input" type="text" name="producto_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}" maxlength="70" required value="<?php echo $datos['producto_nombre']; ?>" >
 				</div>
 		  	</div>
 		</div>
 		<div class="columns">
-		  	<div class="column">
+		<div class="column">
 		    	<div class="control">
-					<label>Precio</label>
-				  	<input class="input" type="text" name="producto_precio" pattern="[0-9.]{1,25}" maxlength="25" required value="<?php echo $datos['producto_precio']; ?>" >
+					<label>Catación</label>
+				  	<input class="input" type="text" name="producto_catacion" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}" maxlength="70" required value="<?php echo $datos['producto_catacion']; ?>" >
 				</div>
 		  	</div>
 		  	<div class="column">
 		    	<div class="control">
-					<label>Stock</label>
-				  	<input class="input" type="text" name="producto_stock" pattern="[0-9]{1,25}" maxlength="25" required value="<?php echo $datos['producto_stock']; ?>" >
+					<label>Ubicación</label>
+				  	<input class="input" type="text" name="producto_ubicacion" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}" maxlength="70" required value="<?php echo $datos['producto_ubicacion']; ?>" >
+				</div>
+		  	</div>
+		</div>
+		<div class="columns">
+			<div class="column">
+		    	<div class="control">
+					<label>Quintalaje</label>
+				  	<input class="input" type="text" name="producto_quintalaje" pattern="[0-9]{1,25}" maxlength="25" required value="<?php echo $datos['producto_quintalaje']; ?>" >
 				</div>
 		  	</div>
 		  	<div class="column">

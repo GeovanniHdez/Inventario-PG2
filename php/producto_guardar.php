@@ -6,14 +6,17 @@
 	/*== Almacenando datos ==*/
 	$codigo=limpiar_cadena($_POST['producto_codigo']);
 	$nombre=limpiar_cadena($_POST['producto_nombre']);
+    
+    $catacion=limpiar_cadena($_POST['producto_catacion']);
+    $ubicacion=limpiar_cadena($_POST['producto_ubicacion']);
 
-	$precio=limpiar_cadena($_POST['producto_precio']);
-	$stock=limpiar_cadena($_POST['producto_stock']);
+	/*==$precio=limpiar_cadena($_POST['producto_precio']);==*/
+	$quintalaje=limpiar_cadena($_POST['producto_quintalaje']);
 	$categoria=limpiar_cadena($_POST['producto_categoria']);
 
 
 	/*== Verificando campos obligatorios ==*/
-    if($codigo=="" || $nombre=="" || $precio=="" || $stock=="" || $categoria==""){
+    if($codigo=="" || $nombre=="" || $catacion=="" || $ubicacion=="" || $quintalaje=="" || $categoria==""){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
@@ -45,7 +48,7 @@
         exit();
     }
 
-    if(verificar_datos("[0-9.]{1,25}",$precio)){
+   /* if(verificar_datos("[0-9.]{1,25}",$precio)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
@@ -53,13 +56,33 @@
             </div>
         ';
         exit();
-    }
+    }==*/
 
-    if(verificar_datos("[0-9]{1,25}",$stock)){
+    if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}",$catacion)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El STOCK no coincide con el formato solicitado
+                El NOMBRE no coincide con el formato solicitado
+            </div>
+        ';
+        exit();
+    }
+
+    if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}",$ubicacion)){
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El NOMBRE no coincide con el formato solicitado
+            </div>
+        ';
+        exit();
+    }
+
+    if(verificar_datos("[0-9]{1,25}",$quintalaje)){
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El quintalaje no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -192,13 +215,14 @@
 
 	/*== Guardando datos ==*/
     $guardar_producto=conexion();
-    $guardar_producto=$guardar_producto->prepare("INSERT INTO producto(producto_codigo,producto_nombre,producto_precio,producto_stock,producto_foto,categoria_id,usuario_id) VALUES(:codigo,:nombre,:precio,:stock,:foto,:categoria,:usuario)");
+    $guardar_producto=$guardar_producto->prepare("INSERT INTO producto(producto_codigo,producto_nombre,producto_catacion,producto_ubicacion,producto_quintalaje,producto_foto,categoria_id,usuario_id) VALUES(:codigo,:nombre,:catacion,:ubicacion,:quintalaje,:foto,:categoria,:usuario)");
 
     $marcadores=[
         ":codigo"=>$codigo,
         ":nombre"=>$nombre,
-        ":precio"=>$precio,
-        ":stock"=>$stock,
+        ":catacion"=>$catacion,
+        ":ubicacion"=>$ubicacion,
+        ":quintalaje"=>$quintalaje,
         ":foto"=>$foto,
         ":categoria"=>$categoria,
         ":usuario"=>$_SESSION['id']

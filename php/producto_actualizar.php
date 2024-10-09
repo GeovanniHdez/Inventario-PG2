@@ -24,16 +24,18 @@
 
 
     /*== Almacenando datos ==*/
-    $codigo=limpiar_cadena($_POST['producto_codigo']);
+	$codigo=limpiar_cadena($_POST['producto_codigo']);
 	$nombre=limpiar_cadena($_POST['producto_nombre']);
+    
+    $catacion=limpiar_cadena($_POST['producto_catacion']);
+    $ubicacion=limpiar_cadena($_POST['producto_ubicacion']);
 
-	$precio=limpiar_cadena($_POST['producto_precio']);
-	$stock=limpiar_cadena($_POST['producto_stock']);
+	/*==$precio=limpiar_cadena($_POST['producto_precio']);==*/
+	$quintalaje=limpiar_cadena($_POST['producto_quintalaje']);
 	$categoria=limpiar_cadena($_POST['producto_categoria']);
 
-
 	/*== Verificando campos obligatorios ==*/
-    if($codigo=="" || $nombre=="" || $precio=="" || $stock=="" || $categoria==""){
+    if($codigo=="" || $nombre=="" || $catacion=="" || $ubicacion=="" || $quintalaje=="" || $categoria==""){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
@@ -65,21 +67,31 @@
         exit();
     }
 
-    if(verificar_datos("[0-9.]{1,25}",$precio)){
+    if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}",$catacion)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El PRECIO no coincide con el formato solicitado
+                El NOMBRE no coincide con el formato solicitado
             </div>
         ';
         exit();
     }
 
-    if(verificar_datos("[0-9]{1,25}",$stock)){
+    if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}",$ubicacion)){
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El STOCK no coincide con el formato solicitado
+                El NOMBRE no coincide con el formato solicitado
+            </div>
+        ';
+        exit();
+    }
+
+    if(verificar_datos("[0-9]{1,25}",$quintalaje)){
+        echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El quintalaje no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -139,13 +151,14 @@
 
     /*== Actualizando datos ==*/
     $actualizar_producto=conexion();
-    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_codigo=:codigo,producto_nombre=:nombre,producto_precio=:precio,producto_stock=:stock,categoria_id=:categoria WHERE producto_id=:id");
+    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_codigo=:codigo,producto_nombre=:nombre,producto_catacion=:catacion,producto_ubicacion=:ubicacion,producto_quintalaje=:quintalaje,categoria_id=:categoria WHERE producto_id=:id");
 
     $marcadores=[
         ":codigo"=>$codigo,
         ":nombre"=>$nombre,
-        ":precio"=>$precio,
-        ":stock"=>$stock,
+        ":catacion"=>$catacion,
+        ":ubicacion"=>$ubicacion,
+        ":quintalaje"=>$quintalaje,
         ":categoria"=>$categoria,
         ":id"=>$id
     ];

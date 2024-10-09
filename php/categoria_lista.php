@@ -32,8 +32,8 @@
             <thead>
                 <tr class="has-text-centered">
                 	<th>#</th>
-                    <th>Nombre</th>
-                    <th>Ubicación</th>
+                    <th>Preparación</th>
+                    <th>Planta</th>
                     <th>Productos</th>
                     <th colspan="2">Opciones</th>
                 </tr>
