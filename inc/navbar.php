@@ -2,7 +2,7 @@
 
     <div class="navbar-brand">
         <a class="navbar-item" href="index.php?vista=home">
-        <img src="./img/logo2.png" width="30" height="28">
+        <img src="./img/icono.png" width="40" height="38">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
