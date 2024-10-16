@@ -64,7 +64,7 @@
 				</div>
 		  	</div>
 		  	<div class="column">
-				<label>Categoría</label><br>
+				<label>preparación</label><br>
 		    	<div class="select is-rounded">
 				  	<select name="producto_categoria" >
 				    	<?php

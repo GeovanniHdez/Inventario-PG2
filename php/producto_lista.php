@@ -57,7 +57,7 @@
 			            <div class="content">
 			              <p>
 			                <strong>'.$contador.' - '.$rows['producto_nombre'].'</strong><br>
-			                <strong>No. Recibo:</strong> '.$rows['producto_codigo'].', <strong>Catación:</strong>'.$rows['producto_catacion'].', <strong>Ubicación:</strong> '.$rows['producto_ubicacion'].', <strong>Quintalaje:</strong> '.$rows['producto_quintalaje'].', <strong>Categoría:</strong> '.$rows['categoria_nombre'].', <strong>Registrado por:</strong> '.$rows['usuario_nombre'].' '.$rows['usuario_apellido'].'
+			                <strong>No. Recibo:</strong> '.$rows['producto_codigo'].', <strong>Catación:</strong>'.$rows['producto_catacion'].', <strong>Ubicación:</strong> '.$rows['producto_ubicacion'].', <strong>Quintalaje:</strong> '.$rows['producto_quintalaje'].', <strong>Preparación:</strong> '.$rows['categoria_nombre'].', <strong>Registrado por:</strong> '.$rows['usuario_nombre'].' '.$rows['usuario_apellido'].'
 			              </p>
 			            </div>
 			            <div class="has-text-right">

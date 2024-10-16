@@ -1,6 +1,6 @@
 <div class="container is-fluid mb-6">
     <h1 class="title">Productos</h1>
-    <h2 class="subtitle">Lista de productos por categoría</h2>
+    <h2 class="subtitle">Lista de productos por preparación</h2>
 </div>
 
 <div class="container pb-6 pt-6">
@@ -9,7 +9,7 @@
     ?>
     <div class="columns">
         <div class="column is-one-third">
-            <h2 class="title has-text-centered">Categorías</h2>
+            <h2 class="title has-text-centered">Preparación</h2>
             <?php
                 $categorias=conexion();
                 $categorias=$categorias->query("SELECT * FROM categoria");
@@ -19,7 +19,7 @@
                         echo '<a href="index.php?vista=product_category&category_id='.$row['categoria_id'].'" class="button is-link is-inverted is-fullwidth">'.$row['categoria_nombre'].'</a>';
                     }
                 }else{
-                    echo '<p class="has-text-centered" >No hay categorías registradas</p>';
+                    echo '<p class="has-text-centered" >No hay preparaciones registradas</p>';
                 }
                 $categorias=null;
             ?>
@@ -66,7 +66,7 @@
                     require_once "./php/producto_lista.php";
 
                 }else{
-                    echo '<h2 class="has-text-centered title" >Seleccione una categoría para empezar</h2>';
+                    echo '<h2 class="has-text-centered title" >Seleccione una preparación para empezar</h2>';
                 }
                 $check_categoria=null;
             ?>

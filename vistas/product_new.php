@@ -53,7 +53,7 @@
 				</div>
 		  	</div>
 		  	<div class="column">
-				<label>Categoría</label><br>
+				<label>preparación</label><br>
 		    	<div class="select is-rounded">
 				  	<select name="producto_categoria" >
 				    	<option value="" selected="" >Seleccione una opción</option>

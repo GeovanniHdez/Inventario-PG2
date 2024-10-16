@@ -13,7 +13,7 @@ $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $registros = 10; // Ajusta esto según tus necesidades
 $inicio = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
 
-// Consulta modificada para filtrar por categoría
+// Consulta modificada para filtrar por preparación
 $consulta_datos = "SELECT * FROM producto 
                    INNER JOIN categoria ON producto.categoria_id = categoria.categoria_id 
                    INNER JOIN usuario ON producto.usuario_id = usuario.usuario_id

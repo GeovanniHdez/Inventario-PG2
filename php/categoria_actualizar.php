@@ -13,7 +13,7 @@
     	echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                La categoría no existe en el sistema
+                La preparación no existe en el sistema
             </div>
         ';
         exit();
@@ -94,14 +94,14 @@
         echo '
             <div class="notification is-info is-light">
                 <strong>¡CATEGORIA ACTUALIZADA!</strong><br>
-                La categoría se actualizo con exito
+                La preparación se actualizo con exito
             </div>
         ';
     }else{
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                No se pudo actualizar la categoría, por favor intente nuevamente
+                No se pudo actualizar la preparación, por favor intente nuevamente
             </div>
         ';
     }

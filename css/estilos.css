@@ -20,3 +20,81 @@ body,html{
 .form-inline{
 	display: inline-flex;
 }
+
+/* Estilos específicos para la sección de Órdenes */
+/* estilos.css */
+
+/* Estilos específicos para la sección de Órdenes */
+.ordenes-container {
+    background-color: #ffffff; /* Fondo blanco para la sección */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.ordenes-container h1, .ordenes-container h2 {
+    color: #2c3e50; /* Color para los encabezados */
+    margin-bottom: 15px; /* Espaciado debajo de los encabezados */
+}
+
+.ordenes-container label {
+    display: block; /* Mostrar cada etiqueta en su propia línea */
+    margin-bottom: 8px; /* Espaciado debajo de cada etiqueta */
+}
+
+.ordenes-container select, .ordenes-container button {
+    width: 100%; /* Hacer que el select y el botón ocupen todo el ancho */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado debajo de los elementos */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente más grande */
+}
+
+.ordenes-container button {
+    background-color: #3498db; /* Color de fondo azul */
+    color: white; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+}
+
+.ordenes-container button:hover {
+    background-color: #2980b9; /* Color más oscuro al pasar el mouse */
+}
+
+.ordenes-container #productos {
+    margin-top: 20px; /* Espaciado encima de la lista de productos */
+}
+
+.ordenes-container input[type="checkbox"] {
+    margin-right: 10px; /* Espaciado a la derecha del checkbox */
+}
+
+input[type="checkbox"] + label {
+    font-weight: bold;
+    line-height: 3em;
+    color: #ccc;
+    cursor: pointer;
+}
+input[type="checkbox"]:checked + label {
+    color: #0fbf12;
+}
+
+#productos {
+    margin-top: 20px; /* Espaciado encima de la lista de productos */
+}
+
+#productos input[type="checkbox"] {
+    width: 20px; /* Aumentar el tamaño del checkbox */
+    height: 20px; /* Aumentar el tamaño del checkbox */
+    margin-right: 10px; /* Espaciado a la derecha del checkbox */
+    vertical-align: middle; /* Alinear el checkbox verticalmente con el texto */
+    display: inline-block; /* Mantener el checkbox en línea con el texto */
+}
+
+#productos label {
+    display: inline; /* Mantener el label en la misma línea que el checkbox */
+    vertical-align: middle; /* Alinear el texto con el checkbox */
+    font-size: 16px; /* Ajustar el tamaño de fuente */
+}
+

@@ -140,7 +140,7 @@
 	        echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                La categoría seleccionada no existe
+	                La preparación seleccionada no existe
 	            </div>
 	        ';
 	        exit();

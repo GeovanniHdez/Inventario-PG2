@@ -22,14 +22,14 @@
 		        echo '
 		            <div class="notification is-info is-light">
 		                <strong>¡CATEGORIA ELIMINADA!</strong><br>
-		                Los datos de la categoría se eliminaron con exito
+		                Los datos de la preparación se eliminaron con exito
 		            </div>
 		        ';
 		    }else{
 		        echo '
 		            <div class="notification is-danger is-light">
 		                <strong>¡Ocurrio un error inesperado!</strong><br>
-		                No se pudo eliminar la categoría, por favor intente nuevamente
+		                No se pudo eliminar la preparación, por favor intente nuevamente
 		            </div>
 		        ';
 		    }
@@ -38,7 +38,7 @@
     		echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                No podemos eliminar la categoría ya que tiene productos asociados
+	                No podemos eliminar la preparación ya que tiene productos asociados
 	            </div>
 	        ';
     	}

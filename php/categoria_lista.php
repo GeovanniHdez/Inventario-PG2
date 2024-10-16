@@ -90,7 +90,7 @@
 	$tabla.='</tbody></table></div>';
 
 	if($total>0 && $pagina<=$Npaginas){
-		$tabla.='<p class="has-text-right">Mostrando categorías <strong>'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>';
+		$tabla.='<p class="has-text-right">Mostrando preparación <strong>'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>';
 	}
 
 	$conexion=null;

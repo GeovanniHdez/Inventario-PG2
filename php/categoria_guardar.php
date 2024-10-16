@@ -72,14 +72,14 @@
         echo '
             <div class="notification is-info is-light">
                 <strong>¡CATEGORIA REGISTRADA!</strong><br>
-                La categoría se registro con exito
+                La preparación se registro con exito
             </div>
         ';
     }else{
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                No se pudo registrar la categoría, por favor intente nuevamente
+                No se pudo registrar la preparación, por favor intente nuevamente
             </div>
         ';
     }

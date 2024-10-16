@@ -1,6 +1,6 @@
 <div class="container is-fluid mb-6">
-	<h1 class="title">Categorías</h1>
-	<h2 class="subtitle">Actualizar categoría</h2>
+	<h1 class="title">preparacións</h1>
+	<h2 class="subtitle">Actualizar preparación</h2>
 </div>
 
 <div class="container pb-6 pt-6">
