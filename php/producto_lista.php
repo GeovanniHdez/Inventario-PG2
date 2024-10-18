@@ -1,8 +1,4 @@
 <?php
-	echo '<div class="has-text-right">';
-	echo '<a href="./php/exportar_pdf.php?categoria_id=' . $categoria_id . '&pagina=' . $pagina . '" class="button is-info is-rounded is-small">Exportar a PDF</a>';
-	echo '</div>';
-
 	$inicio = ($pagina>0) ? (($pagina * $registros)-$registros) : 0;
 	$tabla="";
 	
