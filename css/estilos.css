@@ -158,3 +158,20 @@ input[type="checkbox"]:checked + label {
 .login-container .button:hover {
     background-color: #6d4c41; /* Color más oscuro al pasar el mouse */
 }
+
+
+.box {
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
+}
+
+.title {
+    font-size: 1.5em; /* Tamaño del título */
+}
+
+.subtitle {
+    font-size: 1.2em; /* Tamaño del subtítulo */
+}
+
