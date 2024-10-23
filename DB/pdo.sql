@@ -133,3 +133,18 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Agregar esta nueva tabla
+
+CREATE TABLE cliente (
+    cliente_id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_nombre VARCHAR(100) NOT NULL,
+    cliente_telefono VARCHAR(15) NOT NULL,
+    cliente_email VARCHAR(100) NOT NULL,
+    UNIQUE (cliente_email) -- Para asegurar que el email sea único
+);
+
+ALTER TABLE ordenes
+ADD cliente_id INT,
+ADD CONSTRAINT fk_cliente_id FOREIGN KEY (cliente_id) REFERENCES cliente(cliente_id) ON DELETE CASCADE;
+

@@ -13,7 +13,7 @@ document.getElementById('preparacion').addEventListener('change', function() {
                     data.forEach(producto => {
                         // Crear un ID único para cada checkbox
                         var checkboxId = 'producto_' + producto.producto_codigo;
-                    
+
                         var checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
                         checkbox.name = 'productos[]'; // Array para los productos seleccionados
@@ -21,7 +21,7 @@ document.getElementById('preparacion').addEventListener('change', function() {
                         checkbox.id = checkboxId; // Asignar el ID al checkbox
                         
                         var label = document.createElement('label');
-                        label.innerText = producto.producto_nombre;
+                        label.innerText = `${producto.producto_nombre} - Catación: ${producto.producto_catacion}, Ubicación: ${producto.producto_ubicacion}, Quintalaje: ${producto.producto_quintalaje}`;
                         label.setAttribute('for', checkboxId); // Vincular el label al checkbox
                     
                         // Agregar checkbox y label al div de productos
@@ -29,7 +29,6 @@ document.getElementById('preparacion').addEventListener('change', function() {
                         productosDiv.appendChild(label);
                         productosDiv.appendChild(document.createElement('br')); // Añadir salto de línea
                     });
-
                 } else {
                     productosDiv.innerHTML = '<p>No hay productos disponibles para esta preparación.</p>';
                 }

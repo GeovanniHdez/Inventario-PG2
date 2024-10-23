@@ -9,18 +9,17 @@ $conexion->exec("set names utf8"); // Configurar para usar UTF-8
 // Configurar la zona horaria
 date_default_timezone_set('America/Guatemala');
 
+// Obtener la categoría seleccionada
 $categoria_id = isset($_POST['preparacion']) ? $_POST['preparacion'] : die("Error: No se ha seleccionado una categoría.");
 
-
-echo "Categoría ID: " . $categoria_id . "<br>";
-
-
-// Obtener los productos seleccionados
-$productos_seleccionados = isset($_POST['productos']) ? $_POST['productos'] : [];
+// Obtener el cliente seleccionado
+$cliente_id = isset($_POST['cliente_id']) ? $_POST['cliente_id'] : die("Error: No se ha seleccionado un cliente.");
 
 // Insertar nueva orden en la base de datos
-$stmt = $conexion->prepare("INSERT INTO ordenes (categoria_id) VALUES (:categoria_id)");
+$stmt = $conexion->prepare("INSERT INTO ordenes (usuario_id, categoria_id, cliente_id) VALUES (:usuario_id, :categoria_id, :cliente_id)");
+$stmt->bindParam(':usuario_id', $_SESSION['usuario_id']); // Asegúrate de que el usuario está en la sesión
 $stmt->bindParam(':categoria_id', $categoria_id);
+$stmt->bindParam(':cliente_id', $cliente_id);
 $stmt->execute();
 $orden_id = $conexion->lastInsertId(); // Obtener el ID de la orden recién creada
 
@@ -41,6 +40,16 @@ $pdf->Cell(0, 10, 'Fecha: ' . date('d-m-Y H:i:s'), 0, 1, 'R');
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(0, 10, 'Ordenes de Productos', 0, 1, 'C');
 
+// Agregar el nombre del cliente y el número de orden
+$stmt = $conexion->prepare("SELECT cliente_nombre FROM cliente WHERE cliente_id = :cliente_id");
+$stmt->bindParam(':cliente_id', $cliente_id);
+$stmt->execute();
+$cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+$nombre_cliente = $cliente ? $cliente['cliente_nombre'] : 'Desconocido';
+
+$pdf->Cell(0, 10, 'Cliente: ' . $nombre_cliente, 0, 1, 'L');
+$pdf->Cell(0, 10, 'Numero de Orden: ' . $orden_id, 0, 1, 'L');
+
 // Encabezados de columnas
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(40, 10, 'No. Recibo', 1, 0, 'C');
@@ -51,6 +60,7 @@ $pdf->Cell(20, 10, 'Quintalaje', 1, 1, 'C'); // Nueva línea
 
 // Agregar los productos al PDF y guardarlos en la base de datos
 $pdf->SetFont('Arial', '', 10);
+$productos_seleccionados = isset($_POST['productos']) ? $_POST['productos'] : [];
 foreach ($productos_seleccionados as $codigo_producto) {
     $consulta_producto = "SELECT * FROM producto WHERE producto_codigo = :codigo";
     $stmt = $conexion->prepare($consulta_producto);

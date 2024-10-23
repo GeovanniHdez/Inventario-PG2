@@ -1,5 +1,5 @@
 <div class="container is-fluid mb-6">
-	<h1 class="title">preparacións</h1>
+	<h1 class="title">Preparaciones</h1>
 	<h2 class="subtitle">Actualizar preparación</h2>
 </div>
 
