@@ -1,4 +1,5 @@
 <?php
+session_start(); // Asegúrate de que la sesión esté iniciada
 require_once "../php/main.php";
 require('../fpdf186/fpdf.php'); // Asegúrate de que la ruta sea correcta
 
@@ -40,15 +41,25 @@ $pdf->Cell(0, 10, 'Fecha: ' . date('d-m-Y H:i:s'), 0, 1, 'R');
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(0, 10, 'Ordenes de Productos', 0, 1, 'C');
 
-// Agregar el nombre del cliente y el número de orden
+// Obtener el nombre del cliente
 $stmt = $conexion->prepare("SELECT cliente_nombre FROM cliente WHERE cliente_id = :cliente_id");
 $stmt->bindParam(':cliente_id', $cliente_id);
 $stmt->execute();
 $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
 $nombre_cliente = $cliente ? $cliente['cliente_nombre'] : 'Desconocido';
 
-$pdf->Cell(0, 10, 'Cliente: ' . $nombre_cliente, 0, 1, 'L');
-$pdf->Cell(0, 10, 'Numero de Orden: ' . $orden_id, 0, 1, 'L');
+// Obtener el nombre de la categoría
+$stmt = $conexion->prepare("SELECT categoria_nombre FROM categoria WHERE categoria_id = :categoria_id");
+$stmt->bindParam(':categoria_id', $categoria_id);
+$stmt->execute();
+$categoria = $stmt->fetch(PDO::FETCH_ASSOC);
+$categoria_nombre = $categoria ? $categoria['categoria_nombre'] : 'Desconocido';
+
+// Cambiar el tamaño de la fuente
+$pdf->SetFont('Arial', 'B', 10);
+
+// Crear una línea con todos los datos
+$pdf->Cell(0, 10, 'Cliente: ' . $nombre_cliente . ' | Numero de Orden: ' . $orden_id . ' | Preparacion: ' . $categoria_nombre, 0, 1, 'L');
 
 // Encabezados de columnas
 $pdf->SetFont('Arial', 'B', 10);
