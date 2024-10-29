@@ -167,11 +167,4 @@ input[type="checkbox"]:checked + label {
     text-align: center; /* Centrar el texto */
 }
 
-.title {
-    font-size: 1.5em; /* Tamaño del título */
-}
-
-.subtitle {
-    font-size: 1.2em; /* Tamaño del subtítulo */
-}
 

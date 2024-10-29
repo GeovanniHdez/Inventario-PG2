@@ -4,15 +4,29 @@
 	require_once "main.php";
 
 	/*== Almacenando datos ==*/
-	$codigo=limpiar_cadena($_POST['producto_codigo']);
-	$nombre=limpiar_cadena($_POST['producto_nombre']);
+    $codigo = limpiar_cadena($_POST['producto_codigo']);
+    $nombre = limpiar_cadena($_POST['producto_nombre']);
     
-    $catacion=limpiar_cadena($_POST['producto_catacion']);
-    $ubicacion=limpiar_cadena($_POST['producto_ubicacion']);
-
-	/*==$precio=limpiar_cadena($_POST['producto_precio']);==*/
-	$quintalaje=limpiar_cadena($_POST['producto_quintalaje']);
-	$categoria=limpiar_cadena($_POST['producto_categoria']);
+    // Obtener datos del formulario
+    $bodega = limpiar_cadena($_POST['bodega']);
+    $tarima = limpiar_cadena($_POST['tarima']);
+    $cama_inicial = limpiar_cadena($_POST['cama_inicial']);
+    $cama_final = limpiar_cadena($_POST['cama_final']);
+    $volando = limpiar_cadena($_POST['volando']);
+    $quintalaje = limpiar_cadena($_POST['producto_quintalaje']);
+    $categoria = limpiar_cadena($_POST['producto_categoria']);
+    
+    // Obtener datos de catación
+    $tipo = limpiar_cadena($_POST['tipo']);
+    $tueste = limpiar_cadena($_POST['tueste']);
+    $taza = limpiar_cadena($_POST['taza']);
+    $secamiento = limpiar_cadena($_POST['secamiento']);
+    $catacion_general = limpiar_cadena($_POST['catacion_general']);
+    
+    // Concatenar la información de catación
+    $catacion = "PER-{$tipo}({$tueste}/{$taza}/{$secamiento}/{$catacion_general})";
+    // Concatenar la información de ubicación
+    $ubicacion = "{$bodega}-{$tarima}-{$cama_inicial}-{$cama_final}-{$volando}";
 
 
 	/*== Verificando campos obligatorios ==*/
@@ -32,7 +46,7 @@
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El CODIGO de BARRAS no coincide con el formato solicitado
+                El No. de Recibo no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -47,16 +61,6 @@
         ';
         exit();
     }
-
-   /* if(verificar_datos("[0-9.]{1,25}",$precio)){
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                El PRECIO no coincide con el formato solicitado
-            </div>
-        ';
-        exit();
-    }==*/
 
     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}",$catacion)){
         echo '
@@ -96,7 +100,7 @@
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El CODIGO de BARRAS ingresado ya se encuentra registrado, por favor elija otro
+                El No. de Recibo ingresado ya se encuentra registrado, por favor elija otro
             </div>
         ';
         exit();
