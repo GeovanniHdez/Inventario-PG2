@@ -200,7 +200,7 @@
 		</div>
 		<div class="columns">
 			<div class="column">
-				<label><strong>Foto o imagen del producto</strong></label><br>
+				<label>Foto o imagen del producto</label><br>
 				<div class="file is-small has-name">
 				  	<label class="file-label">
 				    	<input class="file-input" type="file" name="producto_foto" accept=".jpg, .png, .jpeg" >
